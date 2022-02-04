@@ -7,7 +7,7 @@ AlertingSync_DeployScript.sql: This project syncs the data for a custom alert sy
 
 BackupHistory_DeployScript.sql: This creates everything needed to collect the databases that are missing backups, and missing backup count. It also has a Stored Procedure to send a custom alert.
 
-VerifyBackupMovement.ps1: This powershell collects the servers, databases, and missing backup counts.
+VerifyBackupMovement.ps1: This powershell collects the servers, databases, and missing backup counts and inserts them into the table created by BackupHistory_DeployScript.
 
 
 
