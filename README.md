@@ -18,10 +18,13 @@ SELECT* FROM [guide].[VwDenormalizeDiet];
 
 /* The feeding chart before and after denormalization */
 
-SELECT * FROM [care].[FeedingChartSnake] -m
+SELECT * FROM [care].[FeedingChartSnake]
+
 WHERE ReptileListId = 1;
 
-SELECT * FROM [guide].[VwDenormalizeFeedingChartSnake] -m
+
+SELECT * FROM [guide].[VwDenormalizeFeedingChartSnake]
+
 WHERE ReptileName = 'Boa BCI';
 
 /* The feeding chart note that has been created using [care].[FeedingChartSnake] and the View. */
