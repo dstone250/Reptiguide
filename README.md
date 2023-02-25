@@ -30,7 +30,6 @@ ORDER BY CategoryInfo;
 
 ![image](https://user-images.githubusercontent.com/98998250/221331243-a83990b1-78e1-4b38-abb3-64e2069d90f3.png)
 
-
 /* All three of the created notes, which make up the final guide */
 SELECT* FROM [guide].[Note];
 
@@ -39,7 +38,7 @@ SELECT* FROM [guide].[Note];
 /* The final guide for a Boa Constrictor Imperator. */
 EXEC guide.GetReptileGuide @SubSpecies = 'BCI';
 
-![image](https://user-images.githubusercontent.com/98998250/221331541-38414211-a82f-45dc-8405-4afe569faf80.png)
+![image](https://user-images.githubusercontent.com/98998250/221331657-56fd9554-5e78-4448-a720-86a3cdf6359d.png)
 
 /* The final guide for a Russian Tortoise. */
 EXEC guide.GetReptileGuide @SubSpecies = 'Russian Tortoise';
