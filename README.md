@@ -5,6 +5,7 @@ Besides development, I am passionate about animals, and especially reptiles. Thi
 ***************************************************************************************************************************/
 
 USE Reptiguide
+
 GO
 
 /* Diet table before and after denormalization */
@@ -20,7 +21,6 @@ SELECT* FROM [guide].[VwDenormalizeDiet];
 SELECT * FROM [care].[FeedingChartSnake]
 
 WHERE ReptileListId = 1;
-
 
 SELECT * FROM [guide].[VwDenormalizeFeedingChartSnake]
 
