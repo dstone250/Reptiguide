@@ -1,6 +1,10 @@
 /***************************************************************************************************************************
 
-Besides development, I am passionate about animals, and especially reptiles. This is a project I made to create (basic) reptile care guides, from a database with all of the information needed to do so. T-SQL is not the best medium for such a task but I went through with it anyway to see how it would work out, out of curiosity and for the sake of fun. It was a lot more work than anticipated but an interesting experience never the less. Not everything is flushed out. Currently the foreign keys are not all set up for example, but for a functional prototype I am satisfied with it for now.
+In addition to development and tech, I am passionate about animals, and especially reptiles. This is a project I made to create (very basic) reptile care sheets, from a database with all of the information needed to do so. T-SQL is not the best medium for such a task but I went through with it anyway to see how it would work out; both out of curiosity and because it seemed fun. 
+
+Not everything is fleshed out yet and updates should be coming to do so, but it works as intended. I have update to push up, with the FK relationships added when possible. Below are screen shots of some of the tables, views, and stoproc outputs.
+
+Change history:
 
 ***************************************************************************************************************************/
 
