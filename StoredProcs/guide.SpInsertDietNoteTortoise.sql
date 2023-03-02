@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -59,7 +59,7 @@ Date Created: 2023-02-11
 		,@Scope	= Scope	
 		,@BowlSize	= BowlSize	
 		,@SupplementName	= SupplementName	
-		,@SupplementScedule	= SupplementScedule	
+		,@SupplementScedule	= SupplementSchedule	
 	FROM [guide].[VwDenormalizeDiet] 
 	WHERE ReptileListId = @ReptileListId;
 
@@ -67,7 +67,7 @@ Date Created: 2023-02-11
 	FROM [care].[FeedingChartNote]
 	WHERE ReptileListId = @ReptileListId
 
-	SET @NewNote = CONCAT('DIET:',CHAR(10),'A ' ,@ReptileType, 'should have a variety of greens and vegetables to eat such as the following: ', @FeedingChartNote,'. ',
+	SET @NewNote = CONCAT('DIET:',CHAR(10),'A ' ,@ReptileType, ' should have a variety of greens and vegetables to eat such as the following: ', @FeedingChartNote,'. ',
 		'Their meals can be supplimented with ',@SupplementName, ' ' , @SupplementScedule,'.', CHAR(10),
 		'The water bowl should be ',@BowlSize,'.');
 

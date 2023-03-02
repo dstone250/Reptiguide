@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -75,7 +75,8 @@ WHERE ReptileListId = @ReptileListId;
 SET @NewNote = CONCAT('EQUIPMENT: ',CHAR(10),'There is a lot of equipment that can help with the care of a reptile. There are four main categories. Heating control, Humidity control, Automation and Feeding. ',
 CHAR(10),'Heating equipment is used to keep the temperatures at the proper level: ', @HeatingList,CHAR(10),
 'Humidity equipment is used to keep humidity at the proper level: ', @HumidityList,CHAR(10),
-'Automation equipment is used to automate all electrical equipment to keep temperatures and humidity in a sweet spot, and to have a set day and night cycle: ',@AutomationList,CHAR(10),
+'Automation equipment is used to automate all electrical equipment to keep temperatures and humidity in a sweet spot, and to have a set day and night cycle: 
+',@AutomationList,CHAR(10),
 'Feeding equipment is used to assist with feedings: ', @FeedingList,CHAR(10),
 'Thermosats are essential for any heating equipment, and timers are a life saver for setting: heat, lighting, and misting to a desired schedule.');
 
