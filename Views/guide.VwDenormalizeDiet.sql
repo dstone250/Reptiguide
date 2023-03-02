@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -6,6 +6,8 @@ GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 
 
 
@@ -44,9 +46,9 @@ SELECT
 	,cfscs.Frequency AS SupplementSchedule
 FROM care.Diet cd
 	LEFT JOIN reptile.ReptileList rc ON cd.ReptileListId = rc.ReptileListId
-	LEFT JOIN food.FoodScope ffs ON cd.FoodScopeId = ffs.FoodScopeId
+	LEFT JOIN reptile.FoodScope ffs ON cd.FoodScopeId = ffs.FoodScopeId
 	LEFT JOIN care.WaterBowl cwb ON cd.WaterBowlId = cwb.WaterBowlId
 	LEFT JOIN food.supplement fs ON cd.SupplementId = fs.supplementId
-	LEFT JOIN care.FoodSchedule cfscs ON cd.SupplementScheduleId = cfscs.FoodScheduleId;
+	LEFT JOIN care.FoodSchedule cfscs ON cd.FoodScheduleId = cfscs.FoodScheduleId;
 GO
 
