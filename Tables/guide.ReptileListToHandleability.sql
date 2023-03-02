@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -31,6 +31,13 @@ ALTER TABLE [guide].[ReptileListToHandleability] ADD  CONSTRAINT [DF_guide_Repti
 GO
 
 ALTER TABLE [guide].[ReptileListToHandleability] ADD  CONSTRAINT [DF_guide_ReptileListToHandleability__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+GO
+
+ALTER TABLE [guide].[ReptileListToHandleability]  WITH CHECK ADD  CONSTRAINT [FK_guide_ReptilelistToHandleability_reptile_ReptileList] FOREIGN KEY([ReptileListId])
+REFERENCES [reptile].[ReptileList] ([ReptileListId])
+GO
+
+ALTER TABLE [guide].[ReptileListToHandleability] CHECK CONSTRAINT [FK_guide_ReptilelistToHandleability_reptile_ReptileList]
 GO
 
 SET ANSI_NULLS ON

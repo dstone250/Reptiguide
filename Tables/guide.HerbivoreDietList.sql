@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -27,6 +27,13 @@ ALTER TABLE [guide].[HerbivoreDietList] ADD  CONSTRAINT [DF_guide_HerbivoreDietL
 GO
 
 ALTER TABLE [guide].[HerbivoreDietList] ADD  CONSTRAINT [DF_guide_HerbivoreDietList_DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+GO
+
+ALTER TABLE [guide].[HerbivoreDietList]  WITH CHECK ADD  CONSTRAINT [FK_guide_HerbivoreDietList_reptile_ReptileList] FOREIGN KEY([ReptileListId])
+REFERENCES [reptile].[ReptileList] ([ReptileListId])
+GO
+
+ALTER TABLE [guide].[HerbivoreDietList] CHECK CONSTRAINT [FK_guide_HerbivoreDietList_reptile_ReptileList]
 GO
 
 SET ANSI_NULLS ON

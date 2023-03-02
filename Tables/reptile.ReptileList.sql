@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -9,11 +9,8 @@ GO
 
 CREATE TABLE [reptile].[ReptileList](
 	[ReptileListId] [smallint] IDENTITY(1,1) NOT NULL,
-	[CategoryId] [smallint] NOT NULL,
 	[Species] [varchar](50) NOT NULL,
 	[SubSpecies] [varchar](200) NOT NULL,
-	[LifeExpectancy] [smallint] NOT NULL,
-	[FoodScopeId] [tinyint] NOT NULL,
 	[DateCreated] [datetime2](2) NOT NULL,
 	[DateUpdated] [datetime2](2) NOT NULL,
  CONSTRAINT [PK_reptile_ReptileList] PRIMARY KEY CLUSTERED 
@@ -27,20 +24,6 @@ ALTER TABLE [reptile].[ReptileList] ADD  CONSTRAINT [DF_reptile_ReptileList_Date
 GO
 
 ALTER TABLE [reptile].[ReptileList] ADD  CONSTRAINT [DF_reptile_ReptileList__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
-GO
-
-ALTER TABLE [reptile].[ReptileList]  WITH CHECK ADD  CONSTRAINT [FK_reptile_ReptileList_food_FoodScope] FOREIGN KEY([FoodScopeId])
-REFERENCES [food].[FoodScope] ([FoodScopeId])
-GO
-
-ALTER TABLE [reptile].[ReptileList] CHECK CONSTRAINT [FK_reptile_ReptileList_food_FoodScope]
-GO
-
-ALTER TABLE [reptile].[ReptileList]  WITH CHECK ADD  CONSTRAINT [FK_reptile_ReptileList_reptile_Category] FOREIGN KEY([CategoryId])
-REFERENCES [reptile].[Category] ([CategoryId])
-GO
-
-ALTER TABLE [reptile].[ReptileList] CHECK CONSTRAINT [FK_reptile_ReptileList_reptile_Category]
 GO
 
 SET ANSI_NULLS ON

@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -35,6 +35,13 @@ ALTER TABLE [guide].[Note] ADD  CONSTRAINT [DF_guide_Note_DateCreated]  DEFAULT 
 GO
 
 ALTER TABLE [guide].[Note] ADD  CONSTRAINT [DF_guide_Note__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+GO
+
+ALTER TABLE [guide].[Note]  WITH CHECK ADD  CONSTRAINT [FK_guide_Note_reptile_ReptileList] FOREIGN KEY([ReptileListId])
+REFERENCES [reptile].[ReptileList] ([ReptileListId])
+GO
+
+ALTER TABLE [guide].[Note] CHECK CONSTRAINT [FK_guide_Note_reptile_ReptileList]
 GO
 
 SET ANSI_NULLS ON

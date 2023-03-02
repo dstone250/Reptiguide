@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -7,7 +7,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [reptile].[handleability](
+CREATE TABLE [reptile].[Handleability](
 	[handleabilityId] [tinyint] IDENTITY(1,1) NOT NULL,
 	[Score] [tinyint] NOT NULL,
 	[handleabilityNote] [varchar](500) NOT NULL,
@@ -20,10 +20,10 @@ CREATE TABLE [reptile].[handleability](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [reptile].[handleability] ADD  CONSTRAINT [DF_Reptile_handleability_DateCreated]  DEFAULT (getdate()) FOR [DateCreated]
+ALTER TABLE [reptile].[Handleability] ADD  CONSTRAINT [DF_Reptile_handleability_DateCreated]  DEFAULT (getdate()) FOR [DateCreated]
 GO
 
-ALTER TABLE [reptile].[handleability] ADD  CONSTRAINT [DF_Reptile_handleability__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+ALTER TABLE [reptile].[Handleability] ADD  CONSTRAINT [DF_Reptile_handleability__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
 GO
 
 SET ANSI_NULLS ON
@@ -38,7 +38,7 @@ GO
 
 
 CREATE TRIGGER [reptile].[TrhandleabilityUpdate]
-ON [reptile].[handleability]
+ON [reptile].[Handleability]
 FOR UPDATE AS
 /************************************************************************************
 Object Name: Reptile.TrhandleabilityUpdate
@@ -62,6 +62,6 @@ BEGIN
 END;
 GO
 
-ALTER TABLE [reptile].[handleability] ENABLE TRIGGER [TrhandleabilityUpdate]
+ALTER TABLE [reptile].[Handleability] ENABLE TRIGGER [TrhandleabilityUpdate]
 GO
 

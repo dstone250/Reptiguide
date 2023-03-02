@@ -7,22 +7,23 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [care].[Substrate](
-	[SubstrateId] [smallint] IDENTITY(1,1) NOT NULL,
-	[Material] [varchar](50) NOT NULL,
+CREATE TABLE [food].[CategoryFeeder](
+	[CategoryFeederId] [smallint] IDENTITY(1,1) NOT NULL,
+	[Category] [varchar](50) NOT NULL,
+	[SubCategory] [varchar](50) NOT NULL,
 	[DateCreated] [datetime2](2) NOT NULL,
 	[DateUpdated] [datetime2](2) NOT NULL,
- CONSTRAINT [PK_care_Substrate] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_food_CategoryFeeder] PRIMARY KEY CLUSTERED 
 (
-	[SubstrateId] ASC
+	[CategoryFeederId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [care].[Substrate] ADD  CONSTRAINT [DF_care_Substrate_DateCreated]  DEFAULT (getdate()) FOR [DateCreated]
+ALTER TABLE [food].[CategoryFeeder] ADD  CONSTRAINT [DF_food_CategoryFeeder_DateCreated]  DEFAULT (getdate()) FOR [DateCreated]
 GO
 
-ALTER TABLE [care].[Substrate] ADD  CONSTRAINT [DF_care_Substrate__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+ALTER TABLE [food].[CategoryFeeder] ADD  CONSTRAINT [DF_food_CategoryFeeder_DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
 GO
 
 SET ANSI_NULLS ON
@@ -32,13 +33,11 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-
-
-CREATE TRIGGER [care].[TrSubstrateUpdate]
-ON [care].[Substrate]
+CREATE TRIGGER [food].[TrCategoryFeederUpdate]
+ON [food].[CategoryFeeder]
 FOR UPDATE AS
 /************************************************************************************
-Object Name: care.TrSubstrateUpdate
+Object Name: food.TrCategoryFeederUpdate
 Created By: Dstone
 Parameter List
 N/A
@@ -52,13 +51,13 @@ Change History
 
 ************************************************************************************/
 BEGIN
-	UPDATE [care].[Substrate]
+	UPDATE [food].[CategoryFeeder]
 	SET DateUpdated = GETDATE()
 	FROM Inserted i
-	WHERE [care].[Substrate].SubstrateID = i.SubstrateID
+	WHERE [food].[CategoryFeeder].CategoryFeederId = i.CategoryFeederId
 END;
 GO
 
-ALTER TABLE [care].[Substrate] ENABLE TRIGGER [TrSubstrateUpdate]
+ALTER TABLE [food].[CategoryFeeder] ENABLE TRIGGER [TrCategoryFeederUpdate]
 GO
 

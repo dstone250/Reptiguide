@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -9,7 +9,7 @@ GO
 
 CREATE TABLE [care].[FeedingChartNote](
 	[FeedingChartNoteId] [tinyint] IDENTITY(1,1) NOT NULL,
-	[ReptileListId] [tinyint] NOT NULL,
+	[ReptileListId] [smallint] NULL,
 	[Note] [varchar](1500) NOT NULL,
 	[DateCreated] [datetime2](2) NOT NULL,
 	[DateUpdated] [datetime2](2) NOT NULL,
@@ -27,6 +27,13 @@ ALTER TABLE [care].[FeedingChartNote] ADD  CONSTRAINT [DF_care_FeedingChartNote_
 GO
 
 ALTER TABLE [care].[FeedingChartNote] ADD  CONSTRAINT [DF_care_FeedingChartNote__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+GO
+
+ALTER TABLE [care].[FeedingChartNote]  WITH CHECK ADD  CONSTRAINT [FK_care_FeedingChartNote_reptile_ReptileList] FOREIGN KEY([ReptileListId])
+REFERENCES [reptile].[ReptileList] ([ReptileListId])
+GO
+
+ALTER TABLE [care].[FeedingChartNote] CHECK CONSTRAINT [FK_care_FeedingChartNote_reptile_ReptileList]
 GO
 
 SET ANSI_NULLS ON
