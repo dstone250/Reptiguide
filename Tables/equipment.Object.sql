@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -28,6 +28,13 @@ ALTER TABLE [equipment].[Object] ADD  CONSTRAINT [DF_equipment_Object_DateCreate
 GO
 
 ALTER TABLE [equipment].[Object] ADD  CONSTRAINT [DF_equipment_Object__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+GO
+
+ALTER TABLE [equipment].[Object]  WITH CHECK ADD  CONSTRAINT [FK_equipment_Object_equipment_Category] FOREIGN KEY([CategoryId])
+REFERENCES [equipment].[Category] ([CategoryId])
+GO
+
+ALTER TABLE [equipment].[Object] CHECK CONSTRAINT [FK_equipment_Object_equipment_Category]
 GO
 
 SET ANSI_NULLS ON

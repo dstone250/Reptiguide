@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -12,8 +12,8 @@ CREATE TABLE [care].[Diet](
 	[ReptileListId] [smallint] NOT NULL,
 	[FoodScopeId] [tinyint] NOT NULL,
 	[WaterBowlId] [varchar](50) NOT NULL,
-	[SupplementScheduleId] [varchar](50) NULL,
-	[SupplementId] [varchar](50) NULL,
+	[FoodScheduleId] [smallint] NOT NULL,
+	[SupplementId] [smallint] NOT NULL,
 	[DateCreated] [datetime2](2) NOT NULL,
 	[DateUpdated] [datetime2](2) NOT NULL,
  CONSTRAINT [PK_care_Diet] PRIMARY KEY CLUSTERED 
@@ -27,6 +27,34 @@ ALTER TABLE [care].[Diet] ADD  CONSTRAINT [DF_care_Diet_DateCreated]  DEFAULT (g
 GO
 
 ALTER TABLE [care].[Diet] ADD  CONSTRAINT [DF_care_Diet__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+GO
+
+ALTER TABLE [care].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_care_Diet_care_FoodSchedule] FOREIGN KEY([FoodScheduleId])
+REFERENCES [care].[FoodSchedule] ([FoodScheduleId])
+GO
+
+ALTER TABLE [care].[Diet] CHECK CONSTRAINT [FK_care_Diet_care_FoodSchedule]
+GO
+
+ALTER TABLE [care].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_care_Diet_food_Supplement] FOREIGN KEY([SupplementId])
+REFERENCES [food].[Supplement] ([supplementId])
+GO
+
+ALTER TABLE [care].[Diet] CHECK CONSTRAINT [FK_care_Diet_food_Supplement]
+GO
+
+ALTER TABLE [care].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_care_Diet_reptile_Foodscope] FOREIGN KEY([FoodScopeId])
+REFERENCES [reptile].[FoodScope] ([FoodScopeId])
+GO
+
+ALTER TABLE [care].[Diet] CHECK CONSTRAINT [FK_care_Diet_reptile_Foodscope]
+GO
+
+ALTER TABLE [care].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_care_Diet_reptile_ReptileList] FOREIGN KEY([ReptileListId])
+REFERENCES [reptile].[ReptileList] ([ReptileListId])
+GO
+
+ALTER TABLE [care].[Diet] CHECK CONSTRAINT [FK_care_Diet_reptile_ReptileList]
 GO
 
 SET ANSI_NULLS ON

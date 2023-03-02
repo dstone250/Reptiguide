@@ -7,22 +7,22 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [care].[Substrate](
-	[SubstrateId] [smallint] IDENTITY(1,1) NOT NULL,
-	[Material] [varchar](50) NOT NULL,
+CREATE TABLE [reptile].[FoodScope](
+	[FoodScopeId] [tinyint] IDENTITY(1,1) NOT NULL,
+	[Scope] [varchar](15) NOT NULL,
 	[DateCreated] [datetime2](2) NOT NULL,
 	[DateUpdated] [datetime2](2) NOT NULL,
- CONSTRAINT [PK_care_Substrate] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_food_FoodScope] PRIMARY KEY CLUSTERED 
 (
-	[SubstrateId] ASC
+	[FoodScopeId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [care].[Substrate] ADD  CONSTRAINT [DF_care_Substrate_DateCreated]  DEFAULT (getdate()) FOR [DateCreated]
+ALTER TABLE [reptile].[FoodScope] ADD  CONSTRAINT [DF_food_FoodScope_DateCreated]  DEFAULT (getdate()) FOR [DateCreated]
 GO
 
-ALTER TABLE [care].[Substrate] ADD  CONSTRAINT [DF_care_Substrate__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+ALTER TABLE [reptile].[FoodScope] ADD  CONSTRAINT [DF_food_FoodScope__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
 GO
 
 SET ANSI_NULLS ON
@@ -34,11 +34,13 @@ GO
 
 
 
-CREATE TRIGGER [care].[TrSubstrateUpdate]
-ON [care].[Substrate]
+
+
+CREATE TRIGGER [reptile].[TrFoodScopeUpdate]
+ON [reptile].[FoodScope]
 FOR UPDATE AS
 /************************************************************************************
-Object Name: care.TrSubstrateUpdate
+Object Name: reptile.TrFoodScopeUpdate
 Created By: Dstone
 Parameter List
 N/A
@@ -52,13 +54,13 @@ Change History
 
 ************************************************************************************/
 BEGIN
-	UPDATE [care].[Substrate]
+	UPDATE [reptile].[FoodScope]
 	SET DateUpdated = GETDATE()
 	FROM Inserted i
-	WHERE [care].[Substrate].SubstrateID = i.SubstrateID
+	WHERE [reptile].[FoodScope].FoodScopeID = i.FoodScopeID
 END;
 GO
 
-ALTER TABLE [care].[Substrate] ENABLE TRIGGER [TrSubstrateUpdate]
+ALTER TABLE [reptile].[FoodScope] ENABLE TRIGGER [TrFoodScopeUpdate]
 GO
 

@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -39,6 +39,13 @@ ALTER TABLE [equipment].[ObjectNote] ADD  CONSTRAINT [DF_equipment_ObjectNote_Da
 GO
 
 ALTER TABLE [equipment].[ObjectNote] ADD  CONSTRAINT [DF_equipment_ObjectNote__DateUpdated]  DEFAULT (getdate()) FOR [DateUpdated]
+GO
+
+ALTER TABLE [equipment].[ObjectNote]  WITH CHECK ADD  CONSTRAINT [FK_equipment_ObjectNote_reptile_ReptileList] FOREIGN KEY([ReptileListId])
+REFERENCES [reptile].[ReptileList] ([ReptileListId])
+GO
+
+ALTER TABLE [equipment].[ObjectNote] CHECK CONSTRAINT [FK_equipment_ObjectNote_reptile_ReptileList]
 GO
 
 SET ANSI_NULLS ON
