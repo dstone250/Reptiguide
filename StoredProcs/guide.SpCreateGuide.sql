@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -23,7 +23,7 @@ Parameter List:
 @Debug: Set to 1 to print the insert statement instead of inserting.
 
 Example: 
-	EXEC [guide].[SpCreateGuide] @Category = 'snake', @SubSpecies = 'bci';
+	EXEC [guide].[SpCreateGuide] @Category = 'snake', @SubSpecies = 'constrictor';
 	EXEC [guide].[SpCreateGuide] @Category = 'Tortoise', @SubSpecies = 'Russian Tortoise';
 
 Purpose: Get the denormalized care information for a reptile, and print it out or use it later on.
@@ -70,7 +70,7 @@ BEGIN
 	EXEC [guide].[SpInsertEquipmentNoteTortoise] @SubSpecies = @SubSpecies;
 END;
 
-EXEC [guide].[GetReptileGuide] @SubSpecies = @SubSpecies;
+EXEC [guide].[SpGetReptileGuide] @SubSpecies = @SubSpecies;
 
 
 

@@ -1,4 +1,4 @@
-USE [Reptiguide]
+USE [Reptiguide_20230227]
 GO
 
 SET ANSI_NULLS ON
@@ -51,13 +51,11 @@ DECLARE
 	,@NewNote VARCHAR(MAX)
 	,@MaterialList VARCHAR(200) = '';
 
-	--,@SubSpecies VARCHAR(100) = 'bci'
-	--,@Debug BIT = 1
-
 SELECT TOP 1 
-	@ReptileListId = ReptileListId,
-	@LifeExpectancy = LifeExpectancy
-FROM reptile.ReptileList
+	@ReptileListId = rl.ReptileListId,
+	@LifeExpectancy = ri.LifeExpectancy
+FROM reptile.ReptileList rl
+	INNER JOIN reptile.Information ri ON ri.ReptileListId = rl.ReptileListId
 WHERE @SubSpecies = SubSpecies;
 
 SELECT 
