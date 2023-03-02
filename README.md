@@ -1,10 +1,8 @@
 /***************************************************************************************************************************
 
-In addition to development and tech, I am passionate about animals, and especially reptiles. This is a project I made to create (very basic) reptile care sheets, from a database with all of the information needed to do so. T-SQL is not the best medium for such a task but I went through with it anyway to see how it would work out; both out of curiosity and because it seemed fun. 
+In addition to computer science and technolgy, I am passionate about animals, and especially reptiles. This is a personal project I made to create (very basic) reptile care sheets, from a database containing all of the information needed to do so. T-SQL is not the best medium for such a task but I went through with it anyway to see how it would work out; both out of curiosity and because it seemed fun. 
 
-Not everything is fleshed out yet and updates should be coming to do so, but it works as intended. I have update to push up, with the FK relationships added when possible. Below are screen shots of some of the tables, views, and stoproc outputs.
-
-Change history:
+Not everything is fleshed out 100%, but it works as intended and the relationships between the tables are set up. Below are screen shots of some of the tables, views, and stoproc outputs. I have the deploy scripts to create the objects uploaded.
 
 ***************************************************************************************************************************/
 
